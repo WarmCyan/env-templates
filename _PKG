@@ -1,0 +1,3 @@
+install=envtmp>$BIN_DIR,templates>$LIB_DIR
+remove=envtmp<$BIN_DIR,templates<$LIB_DIR
+data=NONE

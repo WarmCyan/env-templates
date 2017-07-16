@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+	echo -e "\nThis is the help\n"
+else
+	if [[ "$1" == "ls" ]]; then
+		ls -1 $LIB_DIR/templates | sed 's/\([a-zA-Z0-9\s]*\).sh/\1/'
+	else
+		bash $LIB_DIR/templates/$1.sh
+	fi	
+fi
