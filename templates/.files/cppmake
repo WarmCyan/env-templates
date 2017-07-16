@@ -1,0 +1,38 @@
+# compiler 
+CC=gcc
+
+# output name
+TARGET=program
+
+# directories
+BINDIR=bin
+OBJDIR=obj
+SRCDIR=src
+
+INC=-I$(LIB_DIR)/cpp
+
+SOURCES := $(shell find $(SRCDIR) -type -f -name *.cpp)
+OBJECTS := $(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SOURCES:.cpp=.o))
+
+all: $(TARGET)
+	
+run: all
+	$(BINDIR)/$(TARGET)
+
+re: clean all
+
+rerun: clean run
+
+# link
+$(TARGET): $(OBJECTS)
+	$(CC) -o $(BINDIR)/$(TARGET) $^
+
+# compile
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	$(CC) $(INC) -c -o $@ $<
+
+clean:
+	rm $(OBJDIR)/*
+	rm $(BINDIR)/*
+
+.PHONY: clean all run re rerun
