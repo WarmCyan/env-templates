@@ -1,1 +1,1 @@
-cp $LIB_DIR/templates/.files/test.txt
+cp $LIB_DIR/templates/.files/test.txt ./
