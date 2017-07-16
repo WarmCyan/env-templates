@@ -32,7 +32,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	$(CC) $(INC) -c -o $@ $<
 
 clean:
-	rm $(OBJDIR)/*
-	rm $(BINDIR)/*
+	-rm $(OBJDIR)/*.o
+	-rm $(BINDIR)/$(TARGET)
 
 .PHONY: clean all run re rerun
