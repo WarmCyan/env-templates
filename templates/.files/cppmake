@@ -11,7 +11,7 @@ SRCDIR=src
 
 INC=-I$(LIB_DIR)/cpp
 
-SOURCES := $(shell find $(SRCDIR) -type -f -name *.cpp)
+SOURCES := $(shell find $(SRCDIR) -type f -name *.cpp)
 OBJECTS := $(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SOURCES:.cpp=.o))
 
 all: $(TARGET)
