@@ -8,11 +8,12 @@ TARGET=program
 BINDIR=bin
 OBJDIR=obj
 SRCDIR=src
+LIBDIR=lib
 
 INC=-I$(LIB_DIR)/cpp
 
-SOURCES := $(shell find $(SRCDIR) -type f -name *.cpp)
-OBJECTS := $(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SOURCES:.cpp=.o))
+SOURCES := $(wildcard $(SRCDIR)/*.cpp) $(wildcard $(LIBDIR)/*.cpp)
+OBJECTS := $(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SOURCES:.cpp=.o)) $(patsubst $(LIBDIR)/%,$(OBJDIR)/%,$(SOURCES:.cpp=.o)) 
 
 all: $(TARGET)
 	
