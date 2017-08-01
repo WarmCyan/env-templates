@@ -19,7 +19,7 @@ all: $(TARGET)
 	@echo "Linking complete"
 	
 run: all
-	@echo -e "\n$(C_GREEN_L)Running...$(C_RESET)"
+	@echo -e "\n$(C_GREEN_L)Running...$(C_RESET)\n----------------------------------------"
 	@$(BINDIR)/$(TARGET)
 
 re: clean all
