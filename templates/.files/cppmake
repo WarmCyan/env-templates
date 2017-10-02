@@ -26,6 +26,7 @@ re: clean all
 
 rerun: clean run
 
+# folders
 $(BINDIR):
 	@echo -e "$(C_BLUE)Creating bin folder$(C_RESET)"
 	@mkdir $(BINDIR)
@@ -46,7 +47,7 @@ $(LIBDIR):
 $(TARGET): $(BINDIR) $(OBJDIR) $(SRCDIR) $(LIBDIR) $(OBJECTS)
 	@echo "Compiling complete"
 	@echo -e "$(C_MAGENTA)Linking into '$(C_MAGENTA_L)$(TARGET)$(C_MAGENTA)'...$(C_RESET)"
-	@$(CC) -o $(BINDIR)/$(TARGET) $^
+	$(CC) -o $(BINDIR)/$(TARGET) $^
 
 # compile
 #$(OBJDIR)/%.o: $(SOURCES)
