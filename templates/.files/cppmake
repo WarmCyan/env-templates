@@ -15,7 +15,7 @@ INC=-I$(LIB_DIR)/cpp -I$(LIBDIR)
 SOURCES := $(wildcard $(SRCDIR)/*.cpp) $(wildcard $(LIBDIR)/*.cpp)
 OBJECTS := $(patsubst %.cpp,$(OBJDIR)/%.o,$(notdir $(SOURCES)))
 
-all: $(TARGET)
+all: $(BINDIR) $(OBJDIR) $(SRCDIR) $(LIBDIR) $(TARGET)
 	@echo "Linking complete"
 	
 run: all
@@ -44,10 +44,10 @@ $(LIBDIR):
 	@mkdir $(LIBDIR)
 
 # link
-$(TARGET): $(BINDIR) $(OBJDIR) $(SRCDIR) $(LIBDIR) $(OBJECTS)
+$(TARGET): $(OBJECTS)
 	@echo "Compiling complete"
 	@echo -e "$(C_MAGENTA)Linking into '$(C_MAGENTA_L)$(TARGET)$(C_MAGENTA)'...$(C_RESET)"
-	$(CC) -o $(BINDIR)/$(TARGET) $^
+	@$(CC) -o $(BINDIR)/$(TARGET) $^
 
 # compile
 #$(OBJDIR)/%.o: $(SOURCES)
