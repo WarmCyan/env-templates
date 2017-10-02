@@ -26,8 +26,24 @@ re: clean all
 
 rerun: clean run
 
+$(BINDIR):
+	@echo -e "$(C_BLUE)Creating bin folder$(C_RESET)"
+	@mkdir $(BINDIR)
+	
+$(OBJDIR):
+	@echo -e "$(C_BLUE)Creating obj folder$(C_RESET)"
+	@mkdir $(OBJDIR)
+	
+$(SRCDIR):
+	@echo -e "$(C_BLUE)Creating src folder$(C_RESET)"
+	@mkdir $(SRCDIR)
+	
+$(LIBDIR):
+	@echo -e "$(C_BLUE)Creating lib folder$(C_RESET)"
+	@mkdir $(LIBDIR)
+
 # link
-$(TARGET): $(OBJECTS)
+$(TARGET): $(BINDIR) $(OBJDIR) $(SRCDIR) $(LIBDIR) $(OBJECTS)
 	@echo "Compiling complete"
 	@echo -e "$(C_MAGENTA)Linking into '$(C_MAGENTA_L)$(TARGET)$(C_MAGENTA)'...$(C_RESET)"
 	@$(CC) -o $(BINDIR)/$(TARGET) $^
